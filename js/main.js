@@ -18,11 +18,33 @@ function getTotal(list){
 function setList(list){
     var table = '<thead><tr><td>Description</td><td>Amount</td><td>Value</td><td>Action</td></tr></thead><tbody>';
     for(var key in list){
-        table += '<tr><td>'+ list[key].desc +'</td><td>'+ list[key].amount +'</td><td>'+ list[key].value +'</td><td>Edit | Delete</td></tr>';
+        table += '<tr><td>'+ formatDesc(list[key].desc) +'</td><td>'+ list[key].amount +'</td><td>'+ formatValue(list[key].value) +'</td><td>Edit | Delete</td></tr>';
     }
     table += '</tbody>';
     document.getElementById("listTable").innerHTML = table;
 }
+
+//formatando o desc para ter uma letra maiuscula na frente
+function formatDesc(desc){
+    var str = desc.toLowerCase();
+    //pegou a primeira letra e botou em maiusculo e concatenou com o resto da string, o slice pega a string
+    //a partir da região especifica, no caso por exemplo de "rice" o slice(1) iria pegar somente o "ice"
+    str = str.charAt(0).toUpperCase() + str.slice(1);
+    return str;
+}
+
+//formatando o value para ter virgula em vez de ponto, para ter so 2 casas decimais e ter um cifrão na frente
+function formatValue(value){
+    //transformou pra float, disse que só queria duas casas decimais, e retornou para string concatenando com 
+    //nada
+    var str = parseFloat(value).toFixed(2) + "";
+    //o replace vai fazer com que onde estiver o ponto, vire virgula
+    str = str.replace(".", ",");
+    str = "$ " + str;
+    return str;
+
+}
+
 setList(list);
 
 console.log(getTotal(list));

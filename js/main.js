@@ -42,7 +42,17 @@ function formatValue(value){
     str = str.replace(".", ",");
     str = "$ " + str;
     return str;
+}
 
+//adicionando elementos na tabela
+function addData(){
+    var desc = document.getElementById("desc").value;
+    var amount = document.getElementById("amount").value;
+    var value = document.getElementById("value").value;
+    
+    //unshift adiciona no inicio da tabela
+    list.unshift({"desc": desc, "amount": amount, "value": value});
+    setList(list);
 }
 
 setList(list);

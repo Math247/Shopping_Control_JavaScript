@@ -23,6 +23,7 @@ function setList(list){
     table += '</tbody>';
     document.getElementById("listTable").innerHTML = table;
     getTotal(list);
+    saveListStorage(list);
 }
 
 //formatando o desc para ter uma letra maiuscula na frente
@@ -163,4 +164,20 @@ function deleteList(){
     }
 }
 
-setList(list);
+//salvando a lista no local storage
+function saveListStorage(list){
+    //a função transforma o array em um string para poder salvar no local storage, pois só aceita string
+    var jsonStr = JSON.stringify(list);
+    localStorage.setItem("list",jsonStr);
+}
+
+//verificando se tem uma lista salva no local storage e mostrando caso tenha
+function initListStorage(){
+    var testList = localStorage.getItem("list");
+    if(testList){
+        list = JSON.parse(testList);
+    }
+    setList(list);
+}
+
+initListStorage();

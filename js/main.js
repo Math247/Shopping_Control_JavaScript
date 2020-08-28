@@ -120,6 +120,7 @@ function deleteData(id){
     }
 }
 
+//essa função emite um erro para o usuario caso digite algo errado nos campos
 function validation(){
     var desc = document.getElementById("desc").value;
     var amount = document.getElementById("amount").value;
@@ -151,6 +152,14 @@ function validation(){
         return 0;
     }else{
         return 1;
+    }
+}
+
+//ao apertar o botão delete, irá deletar a lista toda
+function deleteList(){
+    if(confirm("Delete this list?")){
+        list = [];
+        setList(list);
     }
 }
 

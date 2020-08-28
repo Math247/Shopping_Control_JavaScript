@@ -46,7 +46,7 @@ function formatValue(value){
     var str = parseFloat(value).toFixed(2) + "";
     //o replace vai fazer com que onde estiver o ponto, vire virgula
     str = str.replace(".", ",");
-    str = "$ " + str;
+    str = "R$ " + str;
     return str;
 }
 
